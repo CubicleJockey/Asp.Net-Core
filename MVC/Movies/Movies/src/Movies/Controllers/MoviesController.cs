@@ -17,9 +17,14 @@ namespace Movies.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchByTitle)
         {
-            return View(await _context.Movie.ToListAsync());
+            var movies = _context.Movie.Select(movie => movie);
+            if(!string.IsNullOrWhiteSpace(searchByTitle))
+            {
+                movies = movies.Where(movie => movie.Title.Contains(searchByTitle));
+            }
+            return View(await movies.ToListAsync());
         }
 
         // GET: Movies/Details/5
@@ -130,6 +135,8 @@ namespace Movies.Controllers
         }
 
         // POST: Movies/Delete/5
+        // Documentation for AntiForgeryToken (Currently under development): 
+        //   https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
