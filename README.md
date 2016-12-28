@@ -1,4 +1,4 @@
-# Asp.Net-Core Practices
+# Asp.Net-Core Practice Areas
 
 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
                     Version 1, December 2016 
