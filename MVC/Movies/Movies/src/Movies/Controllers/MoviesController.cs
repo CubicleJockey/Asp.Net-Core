@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,18 +14,38 @@ namespace Movies.Controllers
 
         public MoviesController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;  
         }
 
-        // GET: Movies
-        public async Task<IActionResult> Index(string searchByTitle)
+        // GET: Movies/{id}
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Movie.ToArrayAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string title, string genre, string price)
         {
             var movies = _context.Movie.Select(movie => movie);
-            if(!string.IsNullOrWhiteSpace(searchByTitle))
+            if (!string.IsNullOrWhiteSpace(title))
             {
-                movies = movies.Where(movie => movie.Title.Contains(searchByTitle));
+                movies = movies.Where(movie => movie.Title.Contains(title));
             }
-            return View(await movies.ToListAsync());
+            if(!string.IsNullOrWhiteSpace(genre))
+            {
+                movies = movies.Where(movie => movie.Genre.Contains(genre));
+            }
+            if(!string.IsNullOrWhiteSpace(price))
+            {
+                decimal p;
+                var isValid = decimal.TryParse(price, out p);
+                if(!isValid)
+                {
+                    return BadRequest($"{nameof(price)} is not a dollar amount.");
+                }
+                movies = movies.Where(movie => movie.Price == p);
+            }
+            return View(nameof(Index), await movies.ToArrayAsync());
         }
 
         // GET: Movies/Details/5
@@ -61,7 +82,7 @@ namespace Movies.Controllers
             {
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(movie);
         }
@@ -112,7 +133,7 @@ namespace Movies.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(movie);
         }
@@ -144,7 +165,7 @@ namespace Movies.Controllers
             var movie = await _context.Movie.SingleOrDefaultAsync(m => m.Id == id);
             _context.Movie.Remove(movie);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         private bool MovieExists(int id)
