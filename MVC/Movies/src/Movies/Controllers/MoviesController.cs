@@ -23,7 +23,6 @@ namespace Movies.Controllers
             return View(await _context.Movie.ToArrayAsync());
         }
 
-        [HttpPost]
         public async Task<IActionResult> Search(string title, string genre, string price)
         {
             var movies = _context.Movie.Select(movie => movie);
