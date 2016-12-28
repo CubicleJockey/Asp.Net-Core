@@ -1,18 +1,23 @@
-﻿using System.Text.Encodings.Web;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MVC_Core.Models.HelloWorld;
 
 namespace MVC_Core.Controllers
 {
     public class HelloWorldController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is my default action.";
+            return View();
         }
 
-        public string Welcome(string name, int numTimes = 1)
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            return HtmlEncoder.Default.Encode($"Hello {name}, NumTimes is: {numTimes}");
+            var model = new Welcome
+            {
+                Message = $"Hello, {name}.",
+                NumTimes = numTimes
+            };
+            return View(model);
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@using System.Threading.Tasks
+@model MVC_Core.Models.HelloWorld.Welcome
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Welcome with Model</h2>
+
+<ul>
+    @for(var i = 0; i < @Model.NumTimes; i++)
+    {
+        <li>@Model.Message</li>
+    }
+</ul>
