@@ -158,7 +158,7 @@ namespace Movies.Controllers
         // POST: Movies/Delete/5
         // Documentation for AntiForgeryToken (Currently under development): 
         //   https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName(nameof(Delete))]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
