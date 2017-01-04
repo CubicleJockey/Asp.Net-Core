@@ -54,6 +54,8 @@ namespace DemoConsole
             {
                 WriteLine($"Error Occurred: {x.Message}");
                 WriteLine("Shutting Down...");
+                WriteLine("Press any key to finish shutdown...");
+                ReadLine();
             }
         }
 
@@ -70,19 +72,19 @@ namespace DemoConsole
             sb.AppendLine("4: Division");
             sb.AppendLine("Q/q: Quit");
             sb.AppendLine("------------------------------");
-            sb.AppendLine("Enter Option: ");
+            sb.Append("Enter Option: ");
 
             return sb.ToString();
         }
 
         private static string InvlaidOption()
         {
-            return "Please select an option by a number. Valid options are 1 - 4";
+            return "\nPlease select an option by a number. Valid options are 1 - 4";
         }
 
         private static string ErrorNotANumber()
         {
-            return "Input was not a number.";
+            return "\nInput was not a number.";
         }
 
         private static MathInput GetInputs()

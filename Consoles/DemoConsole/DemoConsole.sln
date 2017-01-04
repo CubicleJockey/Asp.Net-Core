@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B31634AA-4CC0-42F0-A72B-0A4105FAE6CB}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DemoConsole", "src\DemoConsole\DemoConsole.xproj", "{05F6F68F-A542-4D99-9453-BC8CA925B54E}"
