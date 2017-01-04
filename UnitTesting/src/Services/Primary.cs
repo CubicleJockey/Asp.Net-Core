@@ -11,6 +11,10 @@ namespace Services
         /// <returns>TRUE if Prime Number, else FALSE</returns>
         public bool IsPrime(int candidate)
         {
+            if(candidate == 1)
+            {
+                return false;
+            }
             throw new NotImplementedException("Please creat a test first.");
         }
     }
