@@ -5,13 +5,23 @@ namespace Services
     public class Primary
     {
         /// <summary>
-        /// Check if an integer is a prime number.
+        /// Check if an 32-bit integer is a prime number.
         /// </summary>
         /// <param name="candidate">Number to check.</param>
         /// <returns>TRUE if Prime Number, else FALSE</returns>
         public bool IsPrime(int candidate)
         {
-            if(candidate == 1)
+           return IsPrime((long)candidate);
+        }
+
+        /// <summary>
+        /// Check if an 64-bit integer is a prime number.
+        /// </summary>
+        /// <param name="candidate">Number to check.</param>
+        /// <returns>TRUE if Prime Number, else FALSE</returns>
+        public bool IsPrime(long candidate)
+        {
+            if (candidate < 2)
             {
                 return false;
             }
