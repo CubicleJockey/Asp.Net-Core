@@ -1,5 +1,4 @@
 ﻿using Xunit;
-using PrimaryService = Services.Primary;
 
 namespace Services.Tests
 {
