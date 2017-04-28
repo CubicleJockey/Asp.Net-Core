@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\assets\images\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
