@@ -13,6 +13,6 @@ require("jquery");
 require("tether");
 require("tether/dist/js/tether.js");
 require("bootstrap");
-require("font-awesome/scss/font-awesome.scss");
-require("bootstrap/scss/bootstrap.scss");
+require("font-awesome/css/font-awesome.css");
+require("bootstrap/dist/css/bootstrap.css");
 //# sourceMappingURL=vendor.js.map
