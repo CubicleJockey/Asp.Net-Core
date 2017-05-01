@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ClientApp\config\karma-test-shim.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\src\app\assets\images\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
