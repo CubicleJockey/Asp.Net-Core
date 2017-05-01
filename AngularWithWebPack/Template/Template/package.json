@@ -4,12 +4,12 @@
   "private": true,
   "description": "Template for Angular.io and Webpacks.",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 9001",
+    "start": "webpack-dev-server --inline --progress --port 8080",
     "test": "karma start karma.webpack.conf.js",
     "build": "rimraf dist && webpack --env production --config config/webpack.prod.js --bail",
     "lint": "tslint ./src/**/*.ts -t verbose"
   },
-  "keywords": [ "angular", "webpacks", "" ],
+  "keywords": [ "angular", "webpacks", "karma", "jasmine" ],
   "author": "André Davis",
   "license": "WTFPL",
   "dependencies": {

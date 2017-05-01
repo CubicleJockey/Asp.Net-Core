@@ -6,13 +6,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 const core_1 = require("@angular/core");
-require("./assets/css/styles.scss");
+//import './assets/css/styles.scss';
 let AppComponent = class AppComponent {
 };
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        templateUrl: './app.component.html'
+        templateUrl: './app.component.html',
+        styles: ['./assets/css/styles.scss']
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

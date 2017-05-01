@@ -6,11 +6,13 @@ const helpers = require('./helpers');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'qualityassurance';
 
+const ROOT = 'wwwroot';
+
 const qaConfig = {
     devtool: 'source-map',
 
     output: {
-        path: helpers.root('../wwwroot/dist'), //Copies the dist folder to the wwwroot hosted folder
+        path: helpers.root(`../${ROOT}/dist`), //Copies the dist folder to the wwwroot hosted folder
         publicPath: '/',
         filename: '[name].[hash].js',
         chunkFilename: '[id].[hash].chunk.js'

@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import './home.component.scss'
+//import './home.component.scss'
 
 @Component({
     selector: 'home-page',
