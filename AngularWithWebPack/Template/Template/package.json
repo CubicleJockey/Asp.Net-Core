@@ -70,6 +70,8 @@
     "protractor": "~4.0.14",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.4",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
     "style-loader": "^0.13.1",
     "tslint": "^3.15.1",
     "typescript": "~2.2.0",

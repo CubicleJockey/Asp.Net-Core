@@ -8,7 +8,7 @@ const SRC = 'src';
 const CLIENT_DIR = `ClientApp/${SRC}`;
 
 const POLYFILLS = 'polyfills';
-const VENDER = 'vender';
+const VENDOR = 'vendor';
 const MAIN = 'main';
 const APP = 'app';
 const INDEX = 'index.html';
@@ -17,14 +17,10 @@ const PATHS = {
     src: path.join(__dirname, `../${SRC}`)
 };
 
-const extractSass = new ExtractTextPlugin({
-    filename: '[name].[contenthash].css'
-});
-
 module.exports = {
     entry: {
         'polyfills': path.join(PATHS.src, `${POLYFILLS}.ts`), //Browser Compatability/Fallback functionality
-        'vendor': path.join(PATHS.src, `${VENDER}.ts`), //Third party Libraries
+        'vendor': path.join(PATHS.src, `${VENDOR}.ts`), //Third party Libraries
         'app': path.join(PATHS.src, `${MAIN}.ts`) //This Application
     },
     resolve: {
@@ -66,20 +62,23 @@ module.exports = {
         ]
     },
     plugins: [
-        extractSass,
+
+        //SCSS
+        new ExtractTextPlugin({
+            filename: '[name].[contenthash].css',
+            allChunnks: true
+        }),
 
         //Debug mode
         new webpack.LoaderOptionsPlugin({
             debug: true
         }),
 
-        // Workaround for angular/angular#11580
         new webpack.ContextReplacementPlugin(
-            // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-            path.resolve(PATHS.src), // location of your src
-            {} // a map of your routes
+            /angular(\\|\/)core(\\|\/)@angular/,
+            path.resolve(__dirname, '../src')
         ),
+
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -87,8 +86,9 @@ module.exports = {
         }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
         new webpack.IgnorePlugin(/^vertx$/), // Workaround for https://github.com/stefanpenner/es6-promise/issues/100
         new webpack.optimize.CommonsChunkPlugin({
-            name: [APP, VENDER, POLYFILLS]
+            name: [APP, VENDOR, POLYFILLS]
         }),
+
         new HtmlWebpackPlugin({
             inject: true,
             filename: `../${INDEX}`,

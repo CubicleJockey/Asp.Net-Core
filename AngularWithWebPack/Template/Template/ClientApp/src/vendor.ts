@@ -1,5 +1,4 @@
 ﻿// Angular -- Webpack is going to package this into the vender.js
-
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
 import '@angular/core';
@@ -13,5 +12,5 @@ import 'jquery';
 import 'tether';
 import 'tether/dist/js/tether.js';
 import 'bootstrap';
-import 'font-awesome/css/font-awesome.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/scss/font-awesome.scss';
+import 'bootstrap/scss/bootstrap.scss';
